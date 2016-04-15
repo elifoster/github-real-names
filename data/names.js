@@ -4,7 +4,7 @@ var doneAuthors = {};
 
 for (var i = 0; i < authors.length; i++) {
     var author = authors[i];
-    var username = author.innerHTML;
+    var username = author.textContent;
     if (!doneAuthors.hasOwnProperty(username)) {
         self.port.emit('getRealname', username);
     }
@@ -13,8 +13,12 @@ for (var i = 0; i < authors.length; i++) {
 function trySetHTML() {
     for (var i = 0; i < authors.length; i++) {
         var author = authors[i];
-        var username = author.innerHTML;
-        authors[i].innerHTML = doneAuthors[username] || username;
+        // Skip the repo header (e.g., the "elifoster" in "elifoster/github-real-names").
+        if (author.getAttribute('itemprop') == 'author') {
+            continue;
+        }
+        var username = author.textContent;
+        authors[i].textContent = doneAuthors[username] || username;
     }
 }
 
