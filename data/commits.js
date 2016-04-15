@@ -23,12 +23,10 @@ function trySetHTML(user) {
         var author = authors[i];
         var username = author.textContent;
         if (user == username) {
-            console.log('setting ' + username);
             authors[i].textContent = doneAuthors[username];
         }
     }
     if (tease) {
-        console.log('setting tease');
         var teasename = tease.textContent;
         tease.textContent = doneAuthors[teasename];
     }
