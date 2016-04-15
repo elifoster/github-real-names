@@ -1,0 +1,18 @@
+{
+  "title": "GitHub Real Names",
+  "name": "github-real-names",
+  "version": "1.0.0",
+  "description": "An extension that shows GitHub user's real names instead of their usernames on issues and such.",
+  "author": "Eli Clemente Gordillo Foster",
+  "main": "index.js",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "real name",
+    "username"
+  ],
+  "homepage": "https://github.com/elifoster/github-real-names"
+}
