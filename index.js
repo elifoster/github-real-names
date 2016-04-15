@@ -2,8 +2,20 @@ var self = require('sdk/self');
 var pageMod = require('sdk/page-mod');
 
 pageMod.PageMod({
-    include: '*.github.com',
-    contentScriptFile: self.data.url('names.js'),
+    include: /https?:\/\/(www\.)?github.com\/.+\/.+\/(issues|pull)\/\d+/,
+    contentScriptFile: self.data.url('issues.js'),
+    onAttach: startListening
+});
+
+pageMod.PageMod({
+    include: /https?:\/\/(www\.)?github\.com(\/)?((dashboard)?(\/)?(index\/\d+)?)/,
+    contentScriptFile: self.data.url('dashboard.js'),
+    onAttach: startListening
+});
+
+pageMod.PageMod({
+    include: /https?:\/\/(www\.)?github\.com\/.+\/.+(\/)?(\/commits)?(\/.+)?(\?page=\d+)?/,
+    contentScriptFile: self.data.url('commits.js'),
     onAttach: startListening
 });
 

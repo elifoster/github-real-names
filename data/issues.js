@@ -18,6 +18,7 @@ function trySetHTML() {
             continue;
         }
         var username = author.textContent;
+        console.log('setting ' + username);
         authors[i].textContent = doneAuthors[username] || username;
     }
 }
