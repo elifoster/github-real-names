@@ -1,5 +1,9 @@
 # Changelog
 ## Version 1
+### 1.1.0
+* Replace usernames with real names in commits and the GitHub dashboard.
+* Improve the regex used to determine when to call certain content scripts. This should improve performance when on pages that are not having anything replaced.
+
 ### 1.0.1
 * Major security fixes (#1):
   * Use textContent instead of innerHTML.
