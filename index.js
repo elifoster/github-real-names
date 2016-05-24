@@ -1,5 +1,6 @@
 var self = require('sdk/self');
 var pageMod = require('sdk/page-mod');
+var he = require('he');
 
 pageMod.PageMod({
     include: /https?:\/\/(www\.)?github.com\/.+\/.+\/(issues|pull)\/\d+/,
@@ -28,7 +29,7 @@ function startListening(worker) {
                 var text = response.text;
                 var name = /<div class="vcard-fullname" itemprop="name">(.+)<\/div>/.exec(text);
                 if (name) {
-                    name = name[1];
+                    name = he.decode(name[1]);
                 } else {
                     name = username;
                 }

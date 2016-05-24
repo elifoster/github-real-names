@@ -1,5 +1,8 @@
 # Changelog
 ## Version 1
+### 1.1.1
+* Decode HTML entities in real names (#4).
+
 ### 1.1.0
 * Replace usernames with real names in commits and the GitHub dashboard.
 * Improve the regex used to determine when to call certain content scripts. This should improve performance when on pages that are not having anything replaced.
