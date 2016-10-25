@@ -29,7 +29,6 @@ function startListening(worker) {
     worker.port.on('getRealname', function(username) {
         if (ss.storage.githubUsers[username]) {
             worker.port.emit('sendRealname', { real: ss.storage.githubUsers[username], user: username } );
-            console.log("[GITHUB REAL NAMES] Using cache for " + username + " to get " + ss.storage.githubUsers[username]);
             return;
         }
         var request = require('sdk/request').Request;
