@@ -1,5 +1,10 @@
 # Changelog
 ## Version 1
+### 1.2.0
+* Improve performance significantly by caching usernames with simple-storage instead of submitting a request for every instance of every username.
+* Add support for issue/pull request URLs that link directly to a comment (#issuecomment-####)
+* Update for GitHub's new selectors
+
 ### 1.1.1
 * Decode HTML entities in real names (#4).
 
