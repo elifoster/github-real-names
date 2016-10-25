@@ -1,6 +1,11 @@
 var self = require('sdk/self');
 var pageMod = require('sdk/page-mod');
+var ss = require('sdk/simple-storage');
 var he = require('he');
+
+if (!ss.storage.githubUsers) {
+    ss.storage.githubUsers = {};
+}
 
 pageMod.PageMod({
     include: /https?:\/\/(www\.)?github.com\/.+\/.+\/(issues|pull)\/\d+(#issuecomment-\d+)?/,
@@ -22,6 +27,11 @@ pageMod.PageMod({
 
 function startListening(worker) {
     worker.port.on('getRealname', function(username) {
+        if (ss.storage.githubUsers[username]) {
+            worker.port.emit('sendRealname', { real: ss.storage.githubUsers[username], user: username } );
+            console.log("[GITHUB REAL NAMES] Using cache for " + username + " to get " + ss.storage.githubUsers[username]);
+            return;
+        }
         var request = require('sdk/request').Request;
         request({
             url: 'https://github.com/' + username,
@@ -33,6 +43,7 @@ function startListening(worker) {
                 } else {
                     name = username;
                 }
+                ss.storage.githubUsers[username] = name;
                 worker.port.emit('sendRealname', { real: name, user: username } );
             }
         }).get();
