@@ -3,7 +3,7 @@ var pageMod = require('sdk/page-mod');
 var he = require('he');
 
 pageMod.PageMod({
-    include: /https?:\/\/(www\.)?github.com\/.+\/.+\/(issues|pull)\/\d+/,
+    include: /https?:\/\/(www\.)?github.com\/.+\/.+\/(issues|pull)\/\d+(#issuecomment-\d+)?/,
     contentScriptFile: self.data.url('issues.js'),
     onAttach: startListening
 });
