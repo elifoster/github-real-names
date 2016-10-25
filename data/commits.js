@@ -11,13 +11,6 @@ for (var i = 0; i < tease.length; i++) {
     }
 }
 
-// if (tease) {
-//     var teaseUsername = tease.textContent;
-//     if (!doneAuthors.hasOwnProperty(teaseUsername)) {
-//         self.port.emit('getRealname', teaseUsername);
-//     }
-// }
-
 function trySetHTML(user) {
     for (var i = 0; i < tease.length; i++) {
         var author = tease[i];
@@ -26,10 +19,6 @@ function trySetHTML(user) {
             tease[i].textContent = doneAuthors[username];
         }
     }
-    // if (tease) {
-    //     var teasename = tease.textContent;
-    //     tease.textContent = doneAuthors[teasename];
-    // }
 }
 
 self.port.on('sendRealname', function(obj) {
