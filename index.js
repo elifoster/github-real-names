@@ -27,7 +27,7 @@ function startListening(worker) {
             url: 'https://github.com/' + username,
             onComplete: function(response) {
                 var text = response.text;
-                var name = /<div class="vcard-fullname" itemprop="name">(.+)<\/div>/.exec(text);
+                var name = /<span class="vcard-fullname d-block" itemprop="name">(.+)<\/span>/.exec(text);
                 if (name) {
                     name = he.decode(name[1]);
                 } else {
